@@ -13,12 +13,12 @@ class JsonBaseModel extends BaseModel{
         }
 
         private function read_table() : array{
-            $table_data = json_decode(file_get_contents($this->table_filepath));
+            $table_data = json_decode(file_get_contents($this->table_filepath), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
             return $table_data;
         }
 
         private function write_table(array $data){
-            $data_json = json_encode($data);
+            $data_json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
             file_put_contents($this->table_filepath, $data_json);
         }
 

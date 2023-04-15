@@ -10,7 +10,8 @@
     },
     "authors": [
         {
-            "name": "Hossein Pira"
+            "name": "Hossein Pira",
+            "email": "h3dev.pira@gmail.com"
         }
     ],
     "require": {
