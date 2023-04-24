@@ -7,11 +7,9 @@
   <link rel="stylesheet" href="<?= $style ?>">
   <title>Dashboard</title>
 </head>
-<body>
 <body class="container">
   <h1>Welcome, <?= $user_name ?>!</h1>
   <p>Your email: <?= $user_email ?></p>
   <a href="/logout">Log out</a>
-</body>
 </body>
 </html>
