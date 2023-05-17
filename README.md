@@ -38,13 +38,14 @@ DB_PASS= Database Password
 
 insert database table ( Be sure to set the database collation to utf8mb4_general_ci ) :
 ```sql
-CREATE TABLE users (
-  id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(50) NOT NULL,
-  email VARCHAR(200) NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  role TINYINT(1) DEFAULT '0'
-);
+CREATE TABLE `users` (
+  `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` int(1) DEFAULT 0,
+  `login_key` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ```
 
 Run on localhost:
