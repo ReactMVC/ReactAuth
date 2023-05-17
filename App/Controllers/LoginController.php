@@ -11,11 +11,15 @@ class LoginController
         session_start();
 
         $error = array();
-
         $database = new User();
-        $get = $database->get(['name', 'email', 'role'], ['login_key' => $_COOKIE['login_key']]);
+        $get = array();
 
-        if ($get) {
+
+        if (isset($_SESSION['login_key']) and isset($_COOKIE['login_key'])) {
+            $get = $database->get(['name', 'email', 'role', 'login_key'], ['login_key' => $_COOKIE['login_key']]);
+        }
+
+        if ($get and $get[0]['login_key'] == $_COOKIE['login_key'] || $get[0]['login_key'] == $_SESSION['login_key']) {
             header('Location: /dashboard');
             exit;
         } else {
