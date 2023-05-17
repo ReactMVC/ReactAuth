@@ -37,6 +37,16 @@ function view($path, $data = []){
     include_once $viewPath;
 }
 
+function load($path){
+
+    // Replace all . to /
+    $path = str_replace('.', '/',$path);
+    // include views folder path
+    $viewPath = BASEPATH . '/views/' . $path . '.php';
+
+    include $viewPath;
+}
+
 function redirect($url){
     header("location: $url");
     exit();

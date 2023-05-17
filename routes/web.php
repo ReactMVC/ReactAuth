@@ -1,14 +1,19 @@
 <?php
 use ReactMVC\App\Core\Routing\Route;
 
-Route::add(['get', 'post'], '/', 'Login@index');
+Route::add(['get', 'post'], '/', 'HomeController@index');
 
-Route::add(['get', 'post'], '/register', 'Register@index');
+Route::add(['get', 'post'], '/send', 'Send@mail');
+Route::add(['get', 'post'], '/send/', 'Send@mail');
 
-Route::add(['get', 'post'], '/register/', 'Register@index');
+Route::add(['get', 'post'], '/login', 'LoginController@index');
+Route::add(['get', 'post'], '/login/', 'LoginController@index');
 
-Route::get('/dashboard', 'Dashboard@index');
+Route::add(['get', 'post'], '/register', 'RegisterController@index');
+Route::add(['get', 'post'], '/register/', 'RegisterController@index');
 
-Route::get('/logout', function () {
-    view('logout');
-});
+Route::add(['get', 'post'], '/logout', 'LogoutController@index');
+Route::add(['get', 'post'], '/logout/', 'LogoutController@index');
+
+
+Route::get('/dashboard', 'UserController@index');

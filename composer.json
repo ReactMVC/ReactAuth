@@ -1,7 +1,7 @@
 {
     "name": "reactmvc/reactmvc",
     "description": "The PHP framework for backend developers",
-    "type": "framework",
+    "type": "project",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -16,6 +16,7 @@
     ],
     "require": {
         "vlucas/phpdotenv": "^5.5",
-        "catfan/medoo": "^2.1"
+        "catfan/medoo": "^2.1",
+        "phpmailer/phpmailer": "^6.8"
     }
 }
