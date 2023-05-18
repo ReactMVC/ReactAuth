@@ -28,13 +28,11 @@
             </div>
             <?php if (!empty($error)): ?>
                 <div class="mt-2 text-center">
-                    <ul>
                         <?php foreach ($error as $show_error): ?>
                             <p class="text-danger">
                                 <?php echo $show_error; ?>
                             </p>
                         <?php endforeach; ?>
-                    </ul>
                 </div>
             <?php endif; ?>
             <form method="post" class="mt-2">

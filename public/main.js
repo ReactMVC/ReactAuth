@@ -30,7 +30,7 @@ function submitForm(event) {
             document.getElementById("ok").style.display = "block";
             setTimeout(function () {
                 document.getElementById("ok").style.display = "none";
-            }, 3000);
+            }, 4000);
         } else {
             console.log('Request failed.');
         }

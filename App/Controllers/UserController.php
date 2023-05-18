@@ -18,16 +18,24 @@ class UserController
 
 
         $user = new User();
+        $get = $user->get(['id', 'name', 'email', 'role'], ['login_key' => $_COOKIE['login_key']]);
 
-        $get = $user->get(['name', 'email', 'role'], ['login_key' => $_COOKIE['login_key']]);
         if (!$get) {
             redirect('/login');
         } else {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+                if (!isset($_POST['name']) || !isset($_POST['email']) || empty($_POST['name']) || empty($_POST['email'])) {
+                    return;
+                } else {
+                    $user->update(['name' => $_POST['name'], 'email' => $_POST['email']], ['id' => $get[0]['id']]);
+                }
+            }
             $name = $get[0]['name'];
             $email = $get[0]['email'];
             $role = $get[0]['role'];
             $text = 'User';
-            if($role == 1){
+            if ($role == 1) {
                 $text = 'Admin';
             }
 

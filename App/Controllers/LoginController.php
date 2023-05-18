@@ -15,7 +15,7 @@ class LoginController
         $get = array();
 
 
-        if (isset($_SESSION['login_key']) and isset($_COOKIE['login_key'])) {
+        if (isset($_SESSION['login_key']) || isset($_COOKIE['login_key'])) {
             $get = $database->get(['name', 'email', 'role', 'login_key'], ['login_key' => $_COOKIE['login_key']]);
         }
 
@@ -25,19 +25,26 @@ class LoginController
         } else {
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-
-                if (empty($email) || empty($password) || !isset($email) || !isset($password)) {
+                if (empty($_POST['email']) || empty($_POST['password']) || !isset($_POST['email']) || !isset($_POST['password'])) {
                     $error[] = 'Please enter your email and password.';
                 } else {
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+
                     $user = $database->get(["id"], [
                         "email" => $email,
                         "password" => md5($password)
                     ]);
 
                     if ($user) {
-                        $key = base64_encode(random_bytes(40));
+
+                        do {
+                            $key = base64_encode(random_bytes(40));
+                            $check = $database->get(["id"], [
+                                "login_key" => md5($key)
+                            ]);
+                        } while ($check);
+
                         $database->update(['login_key' => md5($key)], ['id' => $user[0]['id']]);
                         // successful login - set session and/or cookie
                         $_SESSION['login_key'] = md5($key);

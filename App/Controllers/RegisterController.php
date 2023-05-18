@@ -24,12 +24,12 @@ class RegisterController
         } else {
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $name = $_POST['name'];
-                $email = $_POST['email'];
-                $password = md5($_POST['password']);
-                if (empty($name) || empty($email) || empty($password) || !isset($name) || !isset($email) || !isset($password)) {
+                if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']) || !isset($_POST['name']) || !isset($_POST['email']) || !isset($_POST['password'])) {
                     $error[] = 'Please fill in all required fields.';
                 } else {
+                    $name = $_POST['name'];
+                    $email = $_POST['email'];
+                    $password = md5($_POST['password']);
                     $role = 0;
                     $user_data = [
                         'name' => $name,

@@ -38,19 +38,19 @@ class Send
                 // Set mailer to use smtp
                 $mail->isSMTP();
                 // define smtp host
-                $mail->Host = "mail.reactmvc.ir";
+                $mail->Host = $_ENV['MAIL_HOST'];
                 // enable smtp authentication
                 $mail->SMTPAuth = true;
                 // set type of encryption (ssl / tls)
-                $mail->SMTPSecure = "ssl";
+                $mail->SMTPSecure = $_ENV['MAIL_ENCRYPTION'];
                 // set port to connect smtp
-                $mail->Port = 465;
+                $mail->Port = $_ENV['MAIL_PORT'];
                 // set email username
-                $mail->Username = "info@reactmvc.ir";
+                $mail->Username = $_ENV['MAIL_USERNAME'];
                 // set email password
-                $mail->Password = "apkapikapm12";
+                $mail->Password = $_ENV['MAIL_PASSWORD'];
                 // set email subject
-                $mail->Subject = "ReactMVC";
+                $mail->Subject = $_ENV['MAIL_SUBJECT'];
                 // set email sender
                 $mail->setFrom($fromMail, $name);
                 // Enable html
@@ -60,8 +60,7 @@ class Send
                 // Email body
                 $mail->Body = "<p>$msg</p>";
                 // Add recipients
-                $mail->AddAddress("h3dev.pira@gmail.com");
-                $mail->AddAddress("hosseinpiradev@gmail.com");
+                $mail->AddAddress($_ENV['MAIL_ADMIN']);
                 // Finally send email
                 if ($mail->Send()) {
                     echo "Email sent...!";

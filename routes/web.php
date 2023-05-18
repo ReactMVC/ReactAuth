@@ -16,4 +16,5 @@ Route::add(['get', 'post'], '/logout', 'LogoutController@index');
 Route::add(['get', 'post'], '/logout/', 'LogoutController@index');
 
 
-Route::get('/dashboard', 'UserController@index');
+Route::add(['get', 'post'], '/dashboard', 'UserController@index');
+Route::add(['get', 'post'], '/dashboard/', 'UserController@index');
