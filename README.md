@@ -34,6 +34,16 @@ DB_PORT= Your DB Port (3306)
 DB_NAME= Database Name
 DB_USER= Database User
 DB_PASS= Database Password
+
+MAIL_HOST=mail.reactmvc.ir
+MAIL_FROM=info@reactmvc.ir
+MAIL_NAME="ReactMVC"
+MAIL_PORT=465
+MAIL_USERNAME=info@reactmvc.ir
+MAIL_PASSWORD=apkapikapm12
+MAIL_ENCRYPTION=ssl
+MAIL_SUBJECT="ReactMVC"
+MAIL_ADMIN=h3dev.pira@gmail.com
 ```
 
 insert database table ( Be sure to set the database collation to utf8mb4_general_ci ) :
