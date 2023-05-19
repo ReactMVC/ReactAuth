@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $appName ?> - Login
+        <?= $appName ?> - Reset Password
     </title>
     <link rel="stylesheet" href="/public/style.css">
     <link rel="stylesheet" href="/public/css/bootstrap.min.css">
@@ -19,7 +19,7 @@
     <div class="row mt-4 d-flex align-items-center">
         <div class="col-lg-6 col-md-12 col-sm-12 mb-3 mt-5">
             <div class="text-center">
-                <h1>Register to
+                <h1>Reset password
                     <?= $appName ?>
                 </h1>
                 <p class="mt-1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati veritatis laudantium
@@ -28,39 +28,38 @@
             </div>
             <?php if (!empty($error)): ?>
                 <div class="mt-2 text-center">
-                        <?php foreach ($error as $show_error): ?>
-                            <p class="text-danger">
-                                <?php echo $show_error; ?>
-                            </p>
-                        <?php endforeach; ?>
+                    <?php foreach ($error as $show_error): ?>
+                        <p class="text-danger">
+                            <?php echo $show_error; ?>
+                        </p>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+            <?php if (!empty($ok)): ?>
+                <div class="mt-2 text-center">
+                    <?php foreach ($ok as $show_ok): ?>
+                        <p class="text-success">
+                            <?php echo $show_ok; ?>
+                        </p>
+                    <?php endforeach; ?>
                 </div>
             <?php endif; ?>
             <form method="post" class="mt-2">
                 <div class="form-outline mb-4">
-                    <input type="text" name="name" class="form-control" required />
-                    <label class="form-label">Full Name</label>
+                    <input type="password" name="new_password" class="form-control" required />
+                    <label class="form-label">New Password</label>
                 </div>
-
                 <div class="form-outline mb-4">
-                    <input type="email" name="email" class="form-control" required />
-                    <label class="form-label">Email Address</label>
+                    <input type="password" name="repeat_password" class="form-control" required />
+                    <label class="form-label">Repeat Password</label>
                 </div>
 
-                <div class="form-outline mb-4">
-                    <input type="password" name="password" class="form-control" required />
-                    <label class="form-label">Password</label>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
-
-                <div class="text-center">
-                    <p>Do you have an account? <a href="/login">Login</a></p>
-                </div>
+                <button type="submit" class="btn btn-primary btn-block mb-4">Change Password</button>
             </form>
 
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12 mb-3 mt-2">
-            <img src="/public/images/auth/register.svg" alt="register">
+            <img src="/public/images/auth/reset.svg" alt="reset">
         </div>
     </div>
 
